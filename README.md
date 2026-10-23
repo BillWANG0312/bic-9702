@@ -1,6 +1,6 @@
 # CIE A Level 9702 物理中英双语讲义
 
-面向 CIE A Level 物理（9702）的中英双语讲义网站（Redutech 版），覆盖 AS 与 A2 全部章节。本仓库为 [Ruìqí 应用中心](https://github.com/BillWANG0312) 9702 讲义的生产版本镜像。
+面向 CIE A Level 物理（9702）的中英双语讲义网站（Redutech 版），覆盖 AS 与 A2 全部章节。本仓库为 [Redutech Global Apps Centre](https://github.com/BillWANG0312) 9702 讲义的生产版本镜像。
 
 [![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
