@@ -138,4 +138,3 @@ git add -A && git commit -m "更新第 N 章" && git push
 ## 版权说明
 
 本项目内容整理自 CIE 9702 公开考纲与练习材料，仅用于教学与学习目的；CIE / Cambridge 相关试题与素材版权归 Cambridge International 所有。
-验证行 2026-10-24 01:21:42
