@@ -1,6 +1,6 @@
 # CIE A Level 9702 物理中英双语讲义
 
-面向 CIE A Level 物理（9702）的中英双语讲义网站，基于教师版参考教材 `Physics9702_Teacher.pdf` 整理，覆盖 AS 与 A2 全部章节。
+面向 CIE A Level 物理（9702）的中英双语讲义网站（Redutech 版），覆盖 AS 与 A2 全部章节。本仓库为 [Ruìqí 应用中心](https://github.com/BillWANG0312) 9702 讲义的生产版本镜像。
 
 [![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
@@ -16,7 +16,7 @@
 | 小节 | 176 个 |
 | 例题 | 202 道 |
 | 练习 | 311 道（含真题来源标签） |
-| 插图 | 248 张 PNG |
+| 插图 | 249 张 PNG |
 
 ### 章节列表
 
@@ -65,10 +65,9 @@
 ```
 9702/
 ├── index.html              # 站点主体（全部内容）
-├── images/                 # 248 张插图，命名 ch<章>_fig|example|practice<...>.png
-├── pdf_cache/              # 参考教材分章纯文本（ch01.txt … ch26.txt, appendix_a.txt）
+├── images/                 # 249 张插图，命名 ch<章>_fig|example|practice<...>.png
 ├── update_chapter.py       # 章节更新自动化脚本
-├── Physics9702_Teacher.pdf # 教师版参考教材
+├── Redutech_logotrans.png  # 站点 Logo
 ├── favicon.* / apple-touch-icon.png
 └── .claude/skills/update-chapter.md
 ```
@@ -96,17 +95,17 @@ python3 -m http.server 8000
 章节内容通过 `update_chapter.py` 三步流水线更新：
 
 ```bash
-# 1. 抽取当前章节 HTML 与教材原文
+# 1. 抽取当前章节 HTML
 python3 update_chapter.py prepare <N>
 
-# 2. 对照 pdf_cache/ch<NN>.txt 编写新章节 HTML → /tmp/ch<N>_new.html
+# 2. 编写新章节 HTML → /tmp/ch<N>_new.html
 #    插图一律用 <img src="images/...">，禁止内联 SVG
 
-# 3. 校验并写入 index.html（自动校验标签闭合、LaTeX $ 配对、SVG 策略）
+# 3. 校验并写入 ruiqi 站点的 index.html（自动校验标签闭合、LaTeX $ 配对、SVG 策略）
 python3 update_chapter.py apply <N> /tmp/ch<N>_new.html
 ```
 
-`apply` 会自动生成 `index.html.bak_ch<N>` 安全备份，并在校验失败时中止。
+`apply` 会直接写入生产站点 `/home/bill/nas/ruiqi_website/9702/index.html`，自动生成 `index.html.bak_ch<N>` 安全备份，并在校验失败时中止。更新后执行 `./deploy.sh` 同步到本仓库。
 
 在 Claude Code 中亦可直接使用技能：`/update-chapter <N>`。
 

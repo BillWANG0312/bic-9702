@@ -11,7 +11,7 @@ Usage:
 import sys, os, re, shutil
 from html.parser import HTMLParser
 
-BASE_DIR = '/home/bill/nas/bic_website/9702'
+BASE_DIR = '/home/bill/nas/ruiqi_website/9702'
 HTML_FILE = os.path.join(BASE_DIR, 'index.html')
 CACHE_DIR = os.path.join(BASE_DIR, 'pdf_cache')
 
