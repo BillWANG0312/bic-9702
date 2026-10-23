@@ -153,7 +153,7 @@ git add -A && git commit -m "更新第 N 章" && git push
 
 如需**商业使用**本项目，请联系作者获取商业授权：
 
-- GitHub：[@BillWANG0312](https://github.com/BillWANG0312)
+- GitHub：[BillWANG0312/cie_9702_notes](https://github.com/BillWANG0312/cie_9702_notes)
 
 > 说明：商业授权仅涵盖本项目作者享有版权的部分（讲义整理、插图、代码）；文中引用的 Cambridge 试题与教材素材需由使用者另行取得 Cambridge 授权。
 
