@@ -112,6 +112,17 @@ python3 update_chapter.py apply <N> /tmp/ch<N>_new.html
 
 ## 版本管理
 
+一键提交并推送：
+
+```bash
+./deploy.sh                  # 自动生成提交信息
+./deploy.sh "更新第 5 章"     # 指定提交信息
+```
+
+脚本会自动检测 mihomo 代理（7890）连通性、检查 GitHub 是否可达、提示超过 50 MB 的文件；若没有改动则直接退出。
+
+也可以手动：
+
 ```bash
 git add -A && git commit -m "更新第 N 章" && git push
 ```
