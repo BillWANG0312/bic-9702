@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# 一键提交并推送 9702 讲义仓库
+# 一键提交并推送 9702 讲义仓库（SSH，经 mihomo 代理）
 # 用法：
 #   ./deploy.sh                     # 自动生成提交信息
 #   ./deploy.sh "更新第 5 章"        # 指定提交信息
@@ -10,15 +10,8 @@ set -euo pipefail
 BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$BASE_DIR"
 
-REMOTE_PROXY="http://127.0.0.1:7890"
-
-# ---- 代理：仅在已配置监听时启用，避免无代理环境下卡住 ----
-proxy_host="${REMOTE_PROXY#http://}"
-proxy_host="${proxy_host%:*}"
-proxy_port="${REMOTE_PROXY##*:}"
-if timeout 2 bash -c "</dev/tcp/$proxy_host/$proxy_port" 2>/dev/null; then
-  export https_proxy="$REMOTE_PROXY" http_proxy="$REMOTE_PROXY"
-fi
+PROXY="127.0.0.1:7890"
+SSH_KEY="$HOME/.ssh/id_ed25519_github"
 
 # ---- --check：只跑校验 ----
 if [[ "${1:-}" == "--check" ]]; then
@@ -27,15 +20,26 @@ if [[ "${1:-}" == "--check" ]]; then
   exit $?
 fi
 
-# ---- 网络连通性检查 ----
-if ! curl -s --max-time 10 -o /dev/null https://github.com; then
-  echo "❌ 无法访问 github.com —— 请检查 mihomo 节点的连通性"
+# ---- 代理连通性 ----
+if ! timeout 2 bash -c "</dev/tcp/${PROXY%:*}/${PROXY##*:}" 2>/dev/null; then
+  echo "❌ mihomo 代理 $PROXY 未监听 —— 请先启动 mihomo"
+  exit 1
+fi
+
+# ---- GitHub SSH 认证检查 ----
+# 注意：GitHub 认证成功时 ssh 仍返回 1（不提供 shell），故只检查输出
+if ! ssh_out=$(timeout 20 ssh -o BatchMode=yes -o ConnectTimeout=10 -T git@github.com 2>&1); then
+  :
+fi
+if [[ "$ssh_out" != *"successfully authenticated"* ]]; then
+  echo "❌ GitHub SSH 认证失败 —— 检查 ~/.ssh/config 与密钥是否已添加到 GitHub"
   exit 1
 fi
 
 # ---- 工作区状态 ----
 if git diff --quiet && git diff --cached --quiet && [[ -z "$(git ls-files --others --exclude-standard)" ]]; then
   echo "✅ 没有需要提交的改动"
+  git pull --ff-only --quiet 2>/dev/null || true
   exit 0
 fi
 
