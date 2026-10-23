@@ -2,6 +2,8 @@
 
 面向 CIE A Level 物理（9702）的中英双语讲义网站，基于教师版参考教材 `Physics9702_Teacher.pdf` 整理，覆盖 AS 与 A2 全部章节。
 
+[![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+
 **在线访问：** https://billwang0312.github.io/bic-9702/ （启用 GitHub Pages 后生效）
 
 ---
@@ -135,6 +137,15 @@ git add -A && git commit -m "更新第 N 章" && git push
 
 ---
 
-## 版权说明
+## 许可证
 
-本项目内容整理自 CIE 9702 公开考纲与练习材料，仅用于教学与学习目的；CIE / Cambridge 相关试题与素材版权归 Cambridge International 所有。
+本项目自有内容（讲义整理、插图、代码）采用
+[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-Hans) 许可：
+
+- **署名** — 转载需注明来源并链接回本仓库
+- **非商业性使用** — 不得用于商业目的（如付费课程、付费讲义）
+- **相同方式共享** — 修改后的作品须以相同许可证发布
+
+详见 [LICENSE](LICENSE)。
+
+> **例外：** 文中引用的 CIE / Cambridge 试题与教材素材版权归 Cambridge International 所有，**不适用本许可证**，仅作教学参考使用；如需商用请自行取得授权。
