@@ -4,7 +4,7 @@
 
 [![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
-**在线访问：** https://billwang0312.github.io/cie_9702_notes/ （启用 GitHub Pages 后生效）
+**在线访问：** https://redutechglobal.com/apps/9702
 
 ---
 
